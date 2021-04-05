@@ -11,7 +11,7 @@ Simple, zero-dependency utility for caching async functions.
 ## Features
 
 - [x] Easily cache async functions
-- [x] Memory safe weak-caching
+- [x] Memory safe, weak-caching
 - [x] Typescript support
 
 ## Install
