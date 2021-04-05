@@ -1,11 +1,15 @@
 {
-  "dependencies": {},
+  "dependencies": {
+    "@babel/plugin-proposal-object-rest-spread": "^7.13.8"
+  },
   "devDependencies": {
     "microbundle": "^0.13.0",
     "typescript": "^4.2.3"
   },
   "name": "async-cacher",
-  "scripts": {},
+  "scripts": {
+    "build": "microbundle src/index.ts"
+  },
   "peerDependencies": {},
   "version": "0.0.0"
 }

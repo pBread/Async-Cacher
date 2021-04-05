@@ -22,13 +22,16 @@ yarn add @breadman/async-cacher
 ## Examples
 
 ```js
-import asyncCacher from "@breadman/async-cacher";
+import createAsyncCacher from "@breadman/async-cacher";
+import fetch from "isomorphic-fetch";
 
 async function getRepos(user) {
   return fetch(`https://api.github.com/users/${user}/repos`);
 }
 
 async function main() {
+  const asyncCacher = createAsyncCacher(); // initialize a cacher instance
+
   const a = await asyncCacher(getRepos, "pBread"); // calls api
   const b = await asyncCacher(getRepos, "pBread"); // returns previous call
 
@@ -37,7 +40,7 @@ async function main() {
 ```
 
 ```ts
-import { createAsyncCacher } from "@breadman/async-cacher";
+import createAsyncCacher from "@breadman/async-cacher";
 import fetch from "isomorphic-fetch";
 
 interface Repo {
@@ -58,7 +61,7 @@ class GithubApi {
   }
 
   async getRepoCount() {
-    const repos = await this.getRepos(); // getRepos is cached thus no
+    const repos = await this.getRepos(); // getRepos is
     return repos.length;
   }
 }

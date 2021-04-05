@@ -1,4 +1,4 @@
-export function createAsyncCacher() {
+export default function createAsyncCacher() {
   const wm: WeakMap<Function, Map<number, any>> = new WeakMap();
 
   return async <K = any>(fn: Function, ...args: any[]): Promise<K> => {
