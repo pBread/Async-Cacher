@@ -34,7 +34,7 @@ interface Repo {
 class GithubApi {
   cacher = createAsyncCacher(); // initialize new cache per instance
 
-  async getRepos(user: string) {
+  async getRepos(user: string): Promise<Repo[]> {
     return fetch(`https://api.github.com/users/${user}/repos`).then((res) =>
       res.json()
     );
