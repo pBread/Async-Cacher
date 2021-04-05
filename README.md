@@ -10,6 +10,7 @@ Simple, zero-dependency utility for caching async functions.
 
 ## Features
 
+- [x] Easily cache async functions
 - [x] Memory safe weak-caching
 - [x] Typescript support
 
@@ -49,7 +50,7 @@ interface Repo {
 }
 
 class GithubApi {
-  cacher = createAsyncCacher();
+  cacher = createAsyncCacher(); // initialize new cache for this instance
 
   constructor(public user: string) {}
 
@@ -61,7 +62,7 @@ class GithubApi {
   }
 
   async getRepoCount() {
-    const repos = await this.getRepos(); // getRepos is
+    const repos = await this.getRepos();
     return repos.length;
   }
 }
