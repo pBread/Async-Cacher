@@ -18,7 +18,7 @@ export default function createAsyncCacher() {
 
 // Same as Java's hashCode()
 function hashCode(...args: any[]) {
-  let json = JSON.stringify(args);
+  const json = JSON.stringify(args);
 
   for (var i = 0, hashed = 0; i < json.length; i++)
     hashed = (Math.imul(31, hashed) + json.charCodeAt(i)) | 0;
