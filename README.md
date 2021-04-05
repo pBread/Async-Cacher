@@ -54,6 +54,6 @@ class GithubApi {
 const api = new GithubApi();
 
 await api.getRepoNames("pBread"); // fetches repos & returns array of names
-await api.getRepoCount("pBread"); // retrieves cached repos & returns count
+await api.getRepoCount("pBread"); // retrieves repos from cache & returns count
 await api.getRepoCount("markerikson"); // fetches repos
 ```
