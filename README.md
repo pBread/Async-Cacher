@@ -32,7 +32,7 @@ interface Repo {
 }
 
 class GithubApi {
-  cacher = createAsyncCacher(); // initialize new cache for this instance
+  cacher = createAsyncCacher(); // initialize new cache per instance
 
   async getRepos(user: string) {
     return fetch(`https://api.github.com/users/${user}/repos`).then((res) =>
