@@ -16,9 +16,6 @@ export function createAsyncCacher() {
   };
 }
 
-export const asyncCacher = createAsyncCacher();
-export default asyncCacher;
-
 // Same as Java's hashCode()
 function hashCode(...args: any[]) {
   let json = JSON.stringify(args);
