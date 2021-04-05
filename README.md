@@ -34,8 +34,6 @@ interface Repo {
 class GithubApi {
   cacher = createAsyncCacher(); // initialize new cache for this instance
 
-  constructor() {}
-
   async getRepos(user: string) {
     return this.cacher<Repo[]>(
       fetch,
@@ -47,11 +45,9 @@ class GithubApi {
     const repos = await this.getRepos();
     return repos.length;
   }
-
-  async getLastUpdated() {}
 }
 
-const api = new GithubApi("pBread");
+const api = new GithubApi();
 
 await api.getRepos(); // fetches repos
 await api.getRepoCount(); // no fetching
