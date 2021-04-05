@@ -10,7 +10,7 @@ Simple, zero-dependency utility for caching async functions.
 
 ## Features
 
-- [x] Easily cache async functions
+- [x]
 - [x] Memory safe, weak-caching
 - [x] Typescript support
 
@@ -35,20 +35,25 @@ class GithubApi {
   cacher = createAsyncCacher(); // initialize new cache for this instance
 
   async getRepos(user: string) {
-    return this.cacher<Repo[]>(
-      fetch,
-      `https://api.github.com/users/${user}/repos`
+    return fetch(`https://api.github.com/users/${user}/repos`).then((res) =>
+      res.json()
     );
   }
 
-  async getRepoCount(user: string) {
-    const repos = await this.getRepos();
+  async getRepoCount(user: string): Promise<number> {
+    const repos = await this.cacher<Repo[]>(this.getRepos, user);
     return repos.length;
+  }
+
+  async getRepoNames(user: string): Promise<string[]> {
+    const repos = await this.cacher<Repo[]>(this.getRepos, user);
+    return repos.map((repo) => repo.name);
   }
 }
 
 const api = new GithubApi();
 
-await api.getRepos(); // fetches repos
-await api.getRepoCount(); // no fetching
+await api.getRepoNames("pBread"); // fetches repos & returns array of names
+await api.getRepoCount("pBread"); // retrieves cached repos & returns count
+await api.getRepoCount("markerikson"); // fetches repos
 ```
