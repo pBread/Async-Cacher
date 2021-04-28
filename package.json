@@ -5,10 +5,21 @@
     "microbundle": "^0.13.0",
     "typescript": "^4.2.3"
   },
-  "name": "async-cacher",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "name": "@breadman/async-cacher",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pBread/Async-Cacher"
+  },
   "scripts": {
     "build": "microbundle src/index.ts"
   },
-  "peerDependencies": {},
-  "version": "0.0.0"
+  "source": "src/index.ts",
+  "types": "dist/index.d.ts",
+  "unpkg": "dist/index.umd.js",
+  "version": "0.0.1"
 }
